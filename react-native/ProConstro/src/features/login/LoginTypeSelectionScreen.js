@@ -108,7 +108,7 @@ class LoginTypeSelectionScreen extends React.Component {
 
             <UserSelectionButton>
               <UserSelectionButtonSegment>
-                <UserIcon source={require('../../res/images/admin.png')} />
+                <UserIcon source={require('../../res/icons/admin.png')} />
               </UserSelectionButtonSegment>
               <UserSelectionButtonSegment>
                 <UserIconText>Admin</UserIconText>
@@ -117,7 +117,7 @@ class LoginTypeSelectionScreen extends React.Component {
 
             <UserSelectionButton>
               <UserSelectionButtonSegment>
-                <UserIcon source={require('../../res/images/employee.png')} />
+                <UserIcon source={require('../../res/icons/employee.png')} />
               </UserSelectionButtonSegment>
               <UserSelectionButtonSegment>
                 <UserIconText>Employee</UserIconText>
@@ -126,7 +126,7 @@ class LoginTypeSelectionScreen extends React.Component {
 
             <UserSelectionButton>
               <UserSelectionButtonSegment>
-                <UserIcon source={require('../../res/images/client.png')} resizeMode="contain" />
+                <UserIcon source={require('../../res/icons/client.png')} />
               </UserSelectionButtonSegment>
               <UserSelectionButtonSegment>
                 <UserIconText>Client</UserIconText>
