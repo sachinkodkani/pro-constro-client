@@ -35,17 +35,29 @@ const Body = styled.View`
   background-color: ${props => props.theme.background.PRIMARY_BACKGROUND_COLOR};
 `;
 
+const BodySegmentVertical = styled.View`
+  flex-direction: row;
+  justify-content : center;
+`;
+
+const BodySegmentHorizontal = styled.View`
+  flex-direction : row;
+  justify-content : space-between;
+`;
+
 const UserSelectionButton = styled.TouchableOpacity`
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
   margin-top: 10;
-  margin-bottom: 10;
+  margin-bottom: 20;
+  margin-right: 10;
+  margin-left: 10;
   elevation: 3;
   border-radius: 20;
   border-color: ${props => props.theme.colorOption.PRIMARY_COLOR};
   height: ${heightPercentageToDP('20%')};
-  width: ${widthPercentageToDP('50%')};
+  width: ${widthPercentageToDP('45')};
 `;
 
 const UserSelectionButtonSegment = styled.View`  
@@ -112,32 +124,36 @@ class LoginTypeSelectionScreen extends React.Component {
 
           <Body>
 
-            <UserSelectionButton>
-              <UserSelectionButtonSegment>
-                <UserIcon source={require('../../res/icons/admin.png')} />
-              </UserSelectionButtonSegment>
-              <UserSelectionButtonSegment>
-                <UserIconText>Admin</UserIconText>
-              </UserSelectionButtonSegment>
-            </UserSelectionButton>
+            <BodySegmentHorizontal>
+              <UserSelectionButton>
+                <UserSelectionButtonSegment>
+                  <UserIcon source={require('../../res/icons/admin.png')} />
+                </UserSelectionButtonSegment>
+                <UserSelectionButtonSegment>
+                  <UserIconText>Admin</UserIconText>
+                </UserSelectionButtonSegment>
+              </UserSelectionButton>
 
-            <UserSelectionButton>
-              <UserSelectionButtonSegment>
-                <UserIcon source={require('../../res/icons/employee.png')} />
-              </UserSelectionButtonSegment>
-              <UserSelectionButtonSegment>
-                <UserIconText>Employee</UserIconText>
-              </UserSelectionButtonSegment>
-            </UserSelectionButton>
+              <UserSelectionButton>
+                <UserSelectionButtonSegment>
+                  <UserIcon source={require('../../res/icons/employee.png')} />
+                </UserSelectionButtonSegment>
+                <UserSelectionButtonSegment>
+                  <UserIconText>Employee</UserIconText>
+                </UserSelectionButtonSegment>
+              </UserSelectionButton>
+            </BodySegmentHorizontal>
 
-            <UserSelectionButton>
-              <UserSelectionButtonSegment>
-                <UserIcon source={require('../../res/icons/client.png')} />
-              </UserSelectionButtonSegment>
-              <UserSelectionButtonSegment>
-                <UserIconText>Client</UserIconText>
-              </UserSelectionButtonSegment>
-            </UserSelectionButton>
+            <BodySegmentVertical>
+              <UserSelectionButton>
+                <UserSelectionButtonSegment>
+                  <UserIcon source={require('../../res/icons/client.png')} />
+                </UserSelectionButtonSegment>
+                <UserSelectionButtonSegment>
+                  <UserIconText>Client</UserIconText>
+                </UserSelectionButtonSegment>
+              </UserSelectionButton>
+            </BodySegmentVertical>
 
           </Body>
 
@@ -150,6 +166,7 @@ class LoginTypeSelectionScreen extends React.Component {
             </RegisterButton>
 
           </Footer>
+          
         </Container>
       </ThemeProvider>
     );
