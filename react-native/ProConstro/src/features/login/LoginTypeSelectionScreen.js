@@ -6,7 +6,6 @@ import {
 import { connect } from 'react-redux';
 import styled, { ThemeProvider } from "styled-components/native";
 
-
 const Container = styled.View`
   flex: 1;
   flex-direction: column;
@@ -50,7 +49,7 @@ const UserSelectionButton = styled.TouchableOpacity`
   justify-content: space-between;
   align-items: stretch;
   margin-top: 10;
-  margin-bottom: 20;
+  margin-bottom: 10;
   margin-right: 10;
   margin-left: 10;
   elevation: 3;
