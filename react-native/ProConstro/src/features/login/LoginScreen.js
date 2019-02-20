@@ -5,8 +5,15 @@ import {
 } from "react-native-responsive-screen";
 import { connect } from "react-redux";
 import styled, { ThemeProvider } from "styled-components/native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const Container = styled.View`
+  flex: 1;
+  flex-direction: column;
+  background-color: ${props => props.theme.background.PRIMARY_BACKGROUND_COLOR};
+`;
+
+const KeyboardAwareScrollViewContainer = styled(KeyboardAwareScrollView)`
   flex: 1;
   flex-direction: column;
   background-color: ${props => props.theme.background.PRIMARY_BACKGROUND_COLOR};
@@ -37,7 +44,7 @@ const Body = styled.View`
 const Segment = styled.View`
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: stretch;
   margin-top: 10;
   margin-bottom: 10;
   margin-left: 20;
@@ -75,8 +82,21 @@ const UserTextInput = styled.TextInput`
   font-family: ${props => props.theme.base.PRIMARY_FONT_FAMILY};
 `;
 
+const ForgotPasswordButton = styled.TouchableOpacity`
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: ${props => props.theme.background.PRIMARY_BACKGROUND_COLOR};
+`;
+
+const ForgotPasswordText = styled.Text`
+  font-size: ${props => props.theme.base.FONT_SIZE_LARGE};
+  color: ${props => props.theme.colorOption.PRIMARY_COLOR};
+  font-family: ${props => props.theme.base.PRIMARY_FONT_FAMILY};
+`;
+
 const LoginButton = styled.TouchableOpacity`
-  margin-bottom: 40;
+  margin-top: 10;
   height: ${heightPercentageToDP("6%")};
   width: ${widthPercentageToDP("90%")};
   flex-direction: column;
@@ -97,6 +117,7 @@ const Footer = styled.View`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: ${heightPercentageToDP("8%")};
   background-color: ${props => props.theme.background.PRIMARY_BACKGROUND_COLOR};
 `;
 
@@ -109,37 +130,51 @@ class LoginScreen extends React.Component {
             <Title>Login</Title>
           </Header>
 
-          <Body>
-            <Segment>
-              <LoginIcon source={require("../../res/icons/unlock.png")} />
-            </Segment>
+          <KeyboardAwareScrollViewContainer
+            enableOnAndroid={true}
+            contentContainerStyle={{ flexGrow: 1 }}
+            resetScrollToCoords={{ x: 0, y: 0 }}
+            scrollEnabled={true}
+          >
+            <Body>
+              <Segment>
+                <LoginIcon source={require("../../res/icons/unlock.png")} />
+              </Segment>
 
-            <Segment>
-              <LoginTitle>Login</LoginTitle>
-              <Description>
-                Please enter your username and password to continue
-              </Description>
-            </Segment>
+              <Segment>
+                <LoginTitle>Login</LoginTitle>
+                <Description>
+                  Please enter your username and password to continue
+                </Description>
+              </Segment>
 
-            <Segment>
-              <TextInputContainer>
-                <UserTextInput placeholder={"Username"} />
-              </TextInputContainer>
+              <Segment>
+                <TextInputContainer>
+                  <UserTextInput placeholder={"Username"} />
+                </TextInputContainer>
 
-              <TextInputContainer>
-                <UserTextInput
-                  secureTextEntry={true}
-                  placeholder={"Password"}
-                />
-              </TextInputContainer>
-            </Segment>
-          </Body>
+                <TextInputContainer>
+                  <UserTextInput
+                    secureTextEntry={true}
+                    placeholder={"Password"}
+                  />
+                </TextInputContainer>
+              </Segment>
 
-          <Footer>
-            <LoginButton>
-              <LoginButtonText>Login</LoginButtonText>
-            </LoginButton>
-          </Footer>
+              <Segment>
+                <ForgotPasswordButton>
+                  <ForgotPasswordText>Forgot password ?</ForgotPasswordText>
+                </ForgotPasswordButton>
+              </Segment>
+
+              <Segment>
+                <LoginButton>
+                  <LoginButtonText>Login</LoginButtonText>
+                </LoginButton>
+              </Segment>
+            </Body>
+          </KeyboardAwareScrollViewContainer>
+          <Footer />
         </Container>
       </ThemeProvider>
     );
