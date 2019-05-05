@@ -6,7 +6,6 @@ import {
 import { connect } from 'react-redux';
 import styled, { ThemeProvider } from "styled-components/native";
 
-
 const Container = styled.View`
   flex: 1;
   flex-direction: column;
@@ -35,29 +34,41 @@ const Body = styled.View`
   background-color: ${props => props.theme.background.PRIMARY_BACKGROUND_COLOR};
 `;
 
+const BodySegmentVertical = styled.View`
+  flex-direction: row;
+  justify-content : center;
+`;
+
+const BodySegmentHorizontal = styled.View`
+  flex-direction : row;
+  justify-content : space-between;
+`;
+
 const UserSelectionButton = styled.TouchableOpacity`
-  margin-top: 5;
-  margin-bottom: 5;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: stretch;
+  margin-top: 10;
+  margin-bottom: 10;
+  margin-right: 10;
+  margin-left: 10;
   elevation: 3;
   border-radius: 20;
   border-color: ${props => props.theme.colorOption.PRIMARY_COLOR};
-  height: ${heightPercentageToDP('25%')};
-  width: ${widthPercentageToDP('60%')};
+  height: ${heightPercentageToDP('20%')};
+  width: ${widthPercentageToDP('45')};
 `;
 
-const UserSelectionButtonSegment = styled.View`
+const UserSelectionButtonSegment = styled.View`  
   flex-direction: row;
   justify-content: center;
   align-items: center;
 `;
 
 const UserIcon = styled.Image`
-  margin-top: 5;
-  width : ${widthPercentageToDP('35%')};
-  height : ${heightPercentageToDP('20%')};
+  margin-top:3;
+  width : 120;
+  height : 120;
 `;
 
 const UserIconText = styled.Text`
@@ -65,24 +76,30 @@ const UserIconText = styled.Text`
   color: ${props => props.theme.background.PRIMARY_TEXT_COLOR};
   font-family: ${props => props.theme.base.PRIMARY_FONT_FAMILY};
   font-weight: ${props => props.theme.base.FONT_WEIGHT_MEDIUM};
-  text-align: left;
 `;
 
 const Footer = styled.View`
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: ${heightPercentageToDP('8%')};
   background-color: ${props => props.theme.background.PRIMARY_BACKGROUND_COLOR};
 `;
 
+const FooterText = styled.Text`
+  margin-bottom: 5;
+  font-size: ${props => props.theme.base.FONT_SIZE_LARGE};
+  color: ${props => props.theme.background.PRIMARY_TEXT_COLOR};
+  font-family: ${props => props.theme.base.PRIMARY_FONT_FAMILY};
+`;
+
 const RegisterButton = styled.TouchableOpacity`
+  margin-bottom: 40;
   height:${heightPercentageToDP('6%')};
-  width: ${widthPercentageToDP('60%')};
-  margin-bottom: 20;
+  width:${widthPercentageToDP('90%')};
   flex-direction: column;
   justify-content: center;
-  elevation: 3;
+  elevation: 2;
   border-radius: 50;
   background-color:${props => props.theme.colorOption.PRIMARY_COLOR};
 `;
@@ -106,42 +123,49 @@ class LoginTypeSelectionScreen extends React.Component {
 
           <Body>
 
-            <UserSelectionButton>
-              <UserSelectionButtonSegment>
-                <UserIcon source={require('../../res/images/admin.png')} />
-              </UserSelectionButtonSegment>
-              <UserSelectionButtonSegment>
-                <UserIconText>Admin</UserIconText>
-              </UserSelectionButtonSegment>
-            </UserSelectionButton>
+            <BodySegmentHorizontal>
+              <UserSelectionButton>
+                <UserSelectionButtonSegment>
+                  <UserIcon source={require('../../res/icons/admin.png')} />
+                </UserSelectionButtonSegment>
+                <UserSelectionButtonSegment>
+                  <UserIconText>Admin</UserIconText>
+                </UserSelectionButtonSegment>
+              </UserSelectionButton>
 
-            <UserSelectionButton>
-              <UserSelectionButtonSegment>
-                <UserIcon source={require('../../res/images/employee.png')} />
-              </UserSelectionButtonSegment>
-              <UserSelectionButtonSegment>
-                <UserIconText>Employee</UserIconText>
-              </UserSelectionButtonSegment>
-            </UserSelectionButton>
+              <UserSelectionButton>
+                <UserSelectionButtonSegment>
+                  <UserIcon source={require('../../res/icons/employee.png')} />
+                </UserSelectionButtonSegment>
+                <UserSelectionButtonSegment>
+                  <UserIconText>Employee</UserIconText>
+                </UserSelectionButtonSegment>
+              </UserSelectionButton>
+            </BodySegmentHorizontal>
 
-            <UserSelectionButton>
-              <UserSelectionButtonSegment>
-                <UserIcon source={require('../../res/images/client.png')} resizeMode="contain" />
-              </UserSelectionButtonSegment>
-              <UserSelectionButtonSegment>
-                <UserIconText>Client</UserIconText>
-              </UserSelectionButtonSegment>
-            </UserSelectionButton>
+            <BodySegmentVertical>
+              <UserSelectionButton>
+                <UserSelectionButtonSegment>
+                  <UserIcon source={require('../../res/icons/client.png')} />
+                </UserSelectionButtonSegment>
+                <UserSelectionButtonSegment>
+                  <UserIconText>Client</UserIconText>
+                </UserSelectionButtonSegment>
+              </UserSelectionButton>
+            </BodySegmentVertical>
 
           </Body>
 
           <Footer>
+
+            <FooterText>Not Registered ? </FooterText>
 
             <RegisterButton>
               <RegisterButtonText>Register</RegisterButtonText>
             </RegisterButton>
 
           </Footer>
+          
         </Container>
       </ThemeProvider>
     );

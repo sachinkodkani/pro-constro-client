@@ -6,7 +6,7 @@ const initialState = {
     theme: {
         base: base,
         background: lightTheme,
-        colorOption: colorOptions.blue
+        colorOption: colorOptions.cyan
     }
 };
 
